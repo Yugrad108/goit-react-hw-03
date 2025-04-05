@@ -1,0 +1,7 @@
+.searchbox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 200px;
+  margin-bottom: 16px;
+}
