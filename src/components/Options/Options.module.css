@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c18b5a;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  background-color: #7d4b3a;
+}
+
+button:active {
+  background-color: #7d4b3a;
+  transform: scale(0.95);
+}
+
+.reset {
+  background-color: #d63b3b;
+  color: white;
+}
+
+.reset:hover {
+  background-color: #b02a37;
+}
+
+.reset:active {
+  background-color: #751821;
+}
