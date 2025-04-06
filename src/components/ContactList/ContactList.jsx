@@ -1,12 +1,12 @@
 import Contact from "../Contact/Contact";
-
+import styles from "./ContactList.module.css";
 const ContactList = ({ contacts, onDel }) => {
   return (
-    <ul>
+    <div className={styles.list}>
       {contacts?.map(({ id, name, number }) => (
         <Contact key={id} name={name} number={number} onDel={() => onDel(id)} />
       ))}
-    </ul>
+    </div>
   );
 };
 

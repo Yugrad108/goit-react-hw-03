@@ -42,7 +42,7 @@ function ContactForm({ onAdd }) {
       {() => (
         <Form className={styles.form}>
           <label htmlFor={usernameId}>Name</label>
-          <Field name="username" id={usernameId} />
+          <Field className={styles.input} name="username" id={usernameId} />
           <ErrorMessage
             name="username"
             component="span"
@@ -50,14 +50,16 @@ function ContactForm({ onAdd }) {
           />
 
           <label htmlFor={numberId}>Number</label>
-          <Field name="number" id={numberId} />
+          <Field className={styles.input} name="number" id={numberId} />
           <ErrorMessage
             name="number"
             component="span"
             className={styles.error}
           />
 
-          <button type="submit">Add contact</button>
+          <button className={styles.button} type="submit">
+            Add contact
+          </button>
         </Form>
       )}
     </Formik>
