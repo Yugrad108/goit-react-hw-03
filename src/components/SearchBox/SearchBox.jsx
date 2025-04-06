@@ -10,8 +10,6 @@ export default function SearchBox({ value, onChange }) {
         type="text"
         id="searchbox"
         value={value}
-        // onChange={(event) => console.log(event.target.value)}
-
         onChange={(event) => onChange(event.target.value)}
       />
     </div>

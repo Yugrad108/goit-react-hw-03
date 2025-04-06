@@ -12,45 +12,27 @@ const tempContacts = [
 ];
 
 function App() {
-  // const [contacts, setContacts] = useState(() => {
-  //   const savedContacts = localStorage.getItem("contacts");
-  //   return savedContacts ? JSON.parse(savedContacts) : tempContacts;
-  // });
-  const [contacts, setContacts] = useState(null);
+  const [contacts, setContacts] = useState(() => {
+    const savedContacts = localStorage.getItem("savedContacts");
+    return savedContacts ? JSON.parse(savedContacts) : tempContacts;
+  });
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    const savedContacts = localStorage.getItem("savedContacts");
-    console.log("savecontacts", savedContacts);
-    if (savedContacts) {
-      setContacts(JSON.parse(savedContacts));
-    } else {
-      setContacts(tempContacts);
-    }
-  }, []);
-
-  // const addContact = ({ username, number }) => {
-  //   setContacts((prev) => [...prev, { id: nanoid(), name: username, number }]);
-  // };
+    localStorage.setItem("savedContacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const addContact = ({ username, number }) => {
     const newContacts = [...contacts, { id: nanoid(), name: username, number }];
     setContacts(newContacts);
-    localStorage.setItem("savedContacts", JSON.stringify(newContacts));
   };
-
-  // const delContact = (contactId) => {
-  //   setContacts((prev) => prev.filter(({ id }) => id !== contactId));
-  // };
 
   const delContact = (contactId) => {
     const newContacts = contacts.filter(({ id }) => id !== contactId);
     setContacts(newContacts);
-    localStorage.setItem("savedContacts", JSON.stringify(newContacts));
   };
 
-  const visibleContacts = contacts?.filter((contact) => {
-    console.log(contact);
+  const filteredContacts = contacts?.filter((contact) => {
     return contact?.name?.toLowerCase().includes(filter.toLowerCase());
   });
 
@@ -59,7 +41,7 @@ function App() {
       <h1>Phonebook</h1>
       <ContactsForm onAdd={addContact} />
       <SearchBox value={filter} onChange={setFilter} />
-      <ContactList contacts={visibleContacts} onDel={delContact} />
+      <ContactList contacts={filteredContacts} onDel={delContact} />
     </>
   );
 }
